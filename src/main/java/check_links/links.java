@@ -1,4 +1,4 @@
-package test2;
+package check_links;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
