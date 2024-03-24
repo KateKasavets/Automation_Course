@@ -1,4 +1,5 @@
 package org.example;
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -6,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
+
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class LoginTest {
@@ -16,9 +19,11 @@ public class LoginTest {
     @BeforeClass
     public static void setup() {
 
-        System.setProperty("webdriver.chrome.driver", ConfProperties.getProperty("chromedriver"));
+        String driverPath = "src/test/resources/chromedriver.exe";
+        System.setProperty("chrome.driver", driverPath);
 
         driver = new ChromeDriver();
+
         loginPage = new LoginPage(driver);
 
         driver.manage().window().maximize();
@@ -38,11 +43,17 @@ public class LoginTest {
         loginPage.clickLoginBtn();
 
         WebElement pageTitle = driver.findElement(By.xpath("//*[@class=\"title\"]"));
-        assertTrue(pageTitle.isDisplayed());
+        assertTrue("Название страницы отображается",pageTitle.isDisplayed());
 
+        String expectedTitle = "Обзор учетной записи";
+        String actualTitle = pageTitle.getText();
+        assertEquals("Название страницы не соответствует ожидаемому", expectedTitle, actualTitle);
 
-        driver.quit();
-        }
+    }
 
+    @AfterClass
+    public static void tearDown() {
+       driver.quit();
+    }
 }
 
