@@ -1,4 +1,5 @@
 package org.example;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -6,54 +7,56 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+
 
 public class LoginTest {
     public static LoginPage loginPage;
     public static WebDriver driver;
 
 
-    @BeforeClass
-    public static void setup() {
+        @BeforeClass
+        public static void setup() {
 
-        String driverPath = "src/test/resources/chromedriver.exe";
-        System.setProperty("chrome.driver", driverPath);
 
-        driver = new ChromeDriver();
+            System.setProperty("webdriver.chrome.driver", ConfProperties.getProperty("chromedriver"));
 
-        loginPage = new LoginPage(driver);
+            driver = new ChromeDriver();
 
-        driver.manage().window().maximize();
+            loginPage = new LoginPage(driver);
 
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+            driver.manage().window().maximize();
 
-        driver.get(ConfProperties.getProperty("loginpage"));
+            driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+            driver.get(ConfProperties.getProperty("loginpage"));
+        }
+
+
+        @Test
+        public void loginTest() {
+            loginPage.inputLogin(ConfProperties.getProperty("login"));
+
+            loginPage.inputPasswd(ConfProperties.getProperty("password"));
+
+            loginPage.clickLoginBtn();
+
+            WebElement pageTitle = driver.findElement(By.xpath("//*[@class=\"title\"]"));
+            assertTrue("Название страницы отображается", pageTitle.isDisplayed());
+
+            String expectedTitle = "Обзор учетной записи";
+            String actualTitle = pageTitle.getText();
+            assertEquals("Название страницы не соответствует ожидаемому", expectedTitle, actualTitle);
+
+        }
+
+        @AfterClass
+        public static void tearDown() {
+            driver.quit();
+        }
     }
-
-
-    @Test
-    public void loginTest() {
-        loginPage.inputLogin(ConfProperties.getProperty("login"));
-
-        loginPage.inputPasswd(ConfProperties.getProperty("password"));
-
-        loginPage.clickLoginBtn();
-
-        WebElement pageTitle = driver.findElement(By.xpath("//*[@class=\"title\"]"));
-        assertTrue("Название страницы отображается",pageTitle.isDisplayed());
-
-        String expectedTitle = "Обзор учетной записи";
-        String actualTitle = pageTitle.getText();
-        assertEquals("Название страницы не соответствует ожидаемому", expectedTitle, actualTitle);
-
-    }
-
-    @AfterClass
-    public static void tearDown() {
-       driver.quit();
-    }
-}
 
