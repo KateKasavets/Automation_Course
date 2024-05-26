@@ -11,37 +11,40 @@ public class LoginPage {
 
     public LoginPage(WebDriver driver) {
         PageFactory.initElements(driver, this);
-        this.driver = driver; }
+        this.driver = driver;
+    }
 
 
-    @FindBy(xpath = "//input[@type=\"email\"]")
+    @FindBy(id = "accountName")
     private WebElement loginField;
 
-    @FindBy(xpath = "//button[@type=\"submit\"]")
+    @FindBy(id = "submit")
     private WebElement loginBtn;
 
-    @FindBy(xpath = "//input[@type=\"password\"]")
+    @FindBy(id = "password")
     private WebElement passwdField;
 
-    @FindBy(xpath = "//a[@class=\"product eyesProduct\"]")
-    private WebElement chooseProduct;
+    @FindBy(xpath = "//button[@id=\"apple\"]")
+    private WebElement loginExternal;
 
     public void inputLogin(String login) {
         loginField.sendKeys(login);
-       }
+    }
 
     public void inputPasswd(String passwd) {
-        passwdField.sendKeys(passwd); }
+        passwdField.sendKeys(passwd);
+    }
 
     public void clickLoginBtn() {
         loginBtn.click();
-    }
-    public void clickChooseProduct() {
-        chooseProduct.click();
 
 
     }
+
+    public void clickLoginExternal() {
+        loginExternal.click();
     }
+}
 
 
 
