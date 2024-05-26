@@ -13,9 +13,14 @@ public class ConfProperties {
             properties.load(fileInputStream);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-        }catch (IOException e) {
-            e.printStackTrace();
-
+        }
+        catch (IOException e) {
+            try {
+                throw new UnreadableFile("Error: Unable to read the file.", e);
+            }catch (UnreadableFile ue) {
+                System.err.println(ue.getMessage());
+                ue.printStackTrace();
+            }
         } finally {
             if (fileInputStream != null)
                 try {
