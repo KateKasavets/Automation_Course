@@ -1,0 +1,9 @@
+org\example\ConfProperties.class
+org\example\RegistrationPage.class
+org\example\LoginPage.class
+org\example\DependentTests.class
+org\example\LoginTest.class
+org\example\AssertsTests.class
+org\example\PriorityClasses.class
+org\example\UnreadableFile.class
+org\example\LogPage.class
