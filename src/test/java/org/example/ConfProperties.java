@@ -12,7 +12,7 @@ public class ConfProperties {
             fileInputStream = new FileInputStream("src/test/resources/conf.properties");
             properties.load(fileInputStream);
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            e.printStackTrace();git
         }
         catch (IOException e) {
             try {
