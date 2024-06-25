@@ -6,9 +6,9 @@ import java.util.Properties;
 public class ConfProperties {
     private static FileInputStream fileInputStream;
     private static Properties  properties = new Properties();
+
     static {
         try {
-
             fileInputStream = new FileInputStream("src/test/resources/conf.properties");
             properties.load(fileInputStream);
         } catch (FileNotFoundException e) {
