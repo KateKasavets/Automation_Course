@@ -7,13 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
 
-    public WebDriver driver;
-
-    public LoginPage(WebDriver driver) {
-        PageFactory.initElements(driver, this);
-        this.driver = driver;
-    }
-
+    private WebDriver driver;
 
     @FindBy(id = "accountName")
     private WebElement loginField;
@@ -24,8 +18,19 @@ public class LoginPage {
     @FindBy(id = "password")
     private WebElement passwdField;
 
-    @FindBy(xpath = "//button[@id=\"apple\"]")
+    @FindBy(xpath = "//button[@id='apple']")
     private WebElement loginExternal;
+
+    @FindBy(xpath = "//div[@id='signin']/app-title")
+    private WebElement loginWithAppleTitle;
+
+    @FindBy(xpath = "//span[@class='error-helper error-helper-accountName status-warning']")
+    private WebElement errorMessageElement;
+
+    public LoginPage(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
 
     public void inputLogin(String login) {
         loginField.sendKeys(login);
@@ -37,17 +42,17 @@ public class LoginPage {
 
     public void clickLoginBtn() {
         loginBtn.click();
-
-
     }
 
     public void clickLoginExternal() {
         loginExternal.click();
     }
+
+    public String getLoginWithAppleTitleText() {
+        return loginWithAppleTitle.getText();
+    }
+
+    public String getErrorMessageText() {
+        return errorMessageElement.getText();
+    }
 }
-
-
-
-
-
-

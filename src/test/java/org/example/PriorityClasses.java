@@ -6,25 +6,26 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(OrderAnnotation.class)
-public class PriorityClasses {
-    public static WebDriver driver;
+public class PriorityClasses extends BaseTest{
     public static LoginPage loginPage;
 
-    @BeforeEach
-    public void setup() {
-
-        System.setProperty("webdriver.chrome.driver", ConfProperties.getProperty("chromedriver"));
-        driver = new ChromeDriver();
+    @BeforeAll
+    public void setupTests() {
+        setup();
         loginPage = new LoginPage(driver);
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get(ConfProperties.getProperty("loginpage"));
 
     }
@@ -34,7 +35,7 @@ public class PriorityClasses {
 
         WebElement pageTitle = driver.findElement(By.id("login-header"));
         assertTrue(pageTitle.isDisplayed(), "Название страницы отображается");
-        assertEquals("Авторизоваться", pageTitle.getText(), "Страница логина не найдена");
+        assertEquals("Авторизоваться с помощью", pageTitle.getText(), "Страница логина не найдена");
 
     }
 
@@ -43,23 +44,17 @@ public class PriorityClasses {
     void testExternalLogin(){
 
         loginPage.clickLoginExternal();
-        WebElement loginWithApple = driver.findElement(By.xpath("//div[@id=\"signin\"]/app-title"));
-        assertTrue(loginWithApple.isDisplayed(), "Заголовок страницы");
-        assertEquals("Используйте Apple ID для входа в приложение «Battle.net».", loginWithApple.getText(), "Текст заголовка не соответствует ожидаемому");
+        Assert.assertEquals(loginPage.getLoginWithAppleTitleText(), "Используйте Apple ID для входа в приложение «Battle.net».", "Текст заголовка не соответствует ожидаемому");
     }
 
     @Test
     @Order(2)
     void testLoginWithoutCredentials() {
-        driver.findElement(By.id("submit")).click();
-        WebElement errorMessageElement = driver.findElement(By.xpath("//span[@class=\"error-helper error-helper-accountName status-warning\"]"));
-        String errorMessage = errorMessageElement.getText();
-        System.out.println("Найдено сообщение об ошибке: " + "Please enter your account name");
-
-    }
-
-    @AfterAll
-    public  static void tearDown(){
-        driver.quit();
+        loginPage.clickLoginBtn();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement errorMessageElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='error-helper error-helper-accountName status-warning']")));
+        String errorMessageText = errorMessageElement.getText();
+        System.out.println("Найдено сообщение об ошибке: " + errorMessageText);
+        Assert.assertEquals(errorMessageText, "Введите имя учетной записи.");
     }
 }

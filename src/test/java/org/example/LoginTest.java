@@ -17,7 +17,6 @@ public class LoginTest {
     public static LoginPage loginPage;
     public static WebDriver driver;
 
-
         @BeforeEach
         public void setup() {
 
