@@ -4,19 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="466e69b1-70eb-4539-9c86-3fa17e2488b8" name="Changes" comment="whitespace">
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/AssertsTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/BaseTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/org/example/WebDriverSingleton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/CheckAsserts.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/ConfProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/ConfProperties.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/DependentTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/DependentTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/LogPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/LogPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/LoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/LoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/LoginTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/PriorityClasses.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/PriorityClasses.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/RegistrationPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/RegistrationPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/UnreadableFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/UnreadableFile.java" afterDir="false" />
+    <list default="true" id="466e69b1-70eb-4539-9c86-3fa17e2488b8" name="Changes" comment="Commit &quot;BaseTest+Singleton&quot;">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,12 +34,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/ВИТАЛЬ/IdeaProjects"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="JUnit.PriorityClasses">
     <configuration name="AssertsTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="myProject" />
@@ -146,6 +137,19 @@
       <option name="presentableId" value="Default" />
       <updated>1719299765517</updated>
     </task>
+    <task id="LOCAL-00001" summary="Commit &quot;BaseTest+Singleton&quot;">
+      <option name="closed" value="true" />
+      <created>1719407192461</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1719407192461</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Commit &quot;BaseTest+Singleton&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit &quot;BaseTest+Singleton&quot;" />
   </component>
 </project>
