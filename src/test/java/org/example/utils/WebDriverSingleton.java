@@ -29,5 +29,4 @@ public class WebDriverSingleton {
             driver = null;
         }
     }
-
 }
