@@ -1,5 +1,6 @@
-package org.example;
+package org.example.utils;
 
+import org.example.utils.ConfProperties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -9,12 +10,11 @@ public class WebDriverSingleton {
     private static WebDriver driver;
 
     private WebDriverSingleton() {
-        // Приватный конструктор, чтобы предотвратить создание экземпляров снаружи
+
     }
 
     public static WebDriver getDriver() {
         if (driver == null) {
-            // Инициализация WebDriver здесь
             System.setProperty("webdriver.chrome.driver", ConfProperties.getProperty("chromedriver"));
             driver = new ChromeDriver();
             driver.manage().window().maximize();
@@ -29,4 +29,5 @@ public class WebDriverSingleton {
             driver = null;
         }
     }
+
 }

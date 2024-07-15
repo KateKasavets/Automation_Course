@@ -7,7 +7,6 @@ import org.testng.asserts.SoftAssert;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class AssertsTests extends BaseTest {
 
@@ -46,4 +45,5 @@ public class AssertsTests extends BaseTest {
 
         softAssert.assertAll();
     }
+
 }

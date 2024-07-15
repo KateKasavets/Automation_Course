@@ -1,4 +1,4 @@
-package org.example;
+package org.example.pageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,13 +7,16 @@ import org.openqa.selenium.WebElement;
 public class RegistrationPage {
     private WebDriver driver;
 
-    // Локаторы элементов на странице регистрации
-    private By firstNameField = By.xpath("//input[@id='first-name']");
-    private By ageField = By.xpath("//input[@id='age']");
-    private By lastNameField = By.xpath("//input[@id='last-name']");
+    private By firstNameField = By.id("first-name");
+    private By ageField = By.id("age");
+    private By lastNameField = By.id("last-name");
 
     public RegistrationPage(WebDriver driver) {
         this.driver = driver;
+    }
+
+    public void openRegistrationPage(String url) {
+        driver.get(url);
     }
 
     public WebElement getFirstNameField() {
@@ -28,4 +31,15 @@ public class RegistrationPage {
         return driver.findElement(lastNameField);
     }
 
+    public String getFirstNameFieldValue() {
+        return getFirstNameField().getAttribute("value");
+    }
+
+    public String getAgeFieldValue() {
+        return getAgeField().getAttribute("value");
+    }
+
+    public String getLastNameFieldValue() {
+        return getLastNameField().getAttribute("value");
+    }
 }

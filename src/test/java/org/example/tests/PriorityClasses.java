@@ -1,17 +1,18 @@
-package org.example;
+package org.example.tests;
 
+
+import org.example.pageObjects.LoginPage;
+import org.example.tests.BaseTest;
+import org.example.utils.ConfProperties;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -19,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(OrderAnnotation.class)
-public class PriorityClasses extends BaseTest{
+public class PriorityClasses extends BaseTest {
     public static LoginPage loginPage;
 
     @BeforeAll
@@ -29,6 +30,7 @@ public class PriorityClasses extends BaseTest{
         driver.get(ConfProperties.getProperty("loginpage"));
 
     }
+
     @Test
     @Order(1)
     public void checkLoginPage() {
@@ -41,7 +43,7 @@ public class PriorityClasses extends BaseTest{
 
     @Test
     @Order(3)
-    void testExternalLogin(){
+    void testExternalLogin() {
 
         loginPage.clickLoginExternal();
         Assert.assertEquals(loginPage.getLoginWithAppleTitleText(), "Используйте Apple ID для входа в приложение «Battle.net».", "Текст заголовка не соответствует ожидаемому");

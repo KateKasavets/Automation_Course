@@ -1,4 +1,4 @@
-package org.example;
+package org.example.utils;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -13,12 +13,9 @@ public class ConfProperties {
         try {
             fileInputStream = new FileInputStream("src/test/resources/conf.properties");
             properties.load(fileInputStream);
-        }
-
-        catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             try {
                 throw new UnreadableFile("Error: Unable to read the file.", e);
             } catch (UnreadableFile ue) {
@@ -38,4 +35,5 @@ public class ConfProperties {
     public static String getProperty(String key) {
         return properties.getProperty(key);
     }
+
 }

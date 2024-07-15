@@ -1,4 +1,4 @@
-package org.example;
+package org.example.pageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +10,6 @@ public class LogPage {
 
     private WebDriver driver;
 
-    // Локаторы элементов на странице логина
     private By emailField = By.xpath("//input[@type='email']");
     private By passwordField = By.xpath("//input[@type='password']");
     private By signInButton = By.xpath("//button[@type='submit']");

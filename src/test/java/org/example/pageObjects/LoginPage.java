@@ -1,4 +1,4 @@
-package org.example;
+package org.example.pageObjects;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -55,4 +55,5 @@ public class LoginPage {
     public String getErrorMessageText() {
         return errorMessageElement.getText();
     }
+
 }
