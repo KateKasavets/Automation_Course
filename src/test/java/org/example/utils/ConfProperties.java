@@ -1,4 +1,6 @@
 package org.example.utils;
+import org.example.UnreadableFile;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;

@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.utils.ConfProperties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 

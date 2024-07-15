@@ -1,6 +1,7 @@
 package org.example;
 
 import org.assertj.core.api.SoftAssertions;
+import org.example.page_objects.RegistrationPage;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class AssertsTests extends BaseTest{
 
-    private  RegistrationPage registrationPage;
+    private RegistrationPage registrationPage;
 
     @BeforeEach
     public   void setupTests() {
