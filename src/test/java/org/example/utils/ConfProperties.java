@@ -32,7 +32,29 @@ public class ConfProperties {
         }
     }
 
-    public static String getProperty(String key) {
+    private static String getProperty(String key) {
         return properties.getProperty(key);
+    }
+
+    public static String getLogin1() {
+        return getProperty("login1");
+    }
+
+    public static String getPasswd1() {
+        return getProperty("passwd1");
+    }
+
+    public static String getLoginPageUrl() {
+        return getProperty("loginpageurl");
+    }
+
+    public static String getChromeDriverPath() {
+        return getProperty("chromedriverpath");
+    }
+    public static String getloginPageDemoTool() {
+        return getProperty("loginPageDemoTool");
+    }
+    public static String getRegistrationPage(){
+        return getProperty("registrationPage");
     }
 }

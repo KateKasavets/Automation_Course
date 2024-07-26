@@ -1,5 +1,5 @@
 package org.example.tests;
-import org.example.page_objects.LoginPage;
+import org.example.pageObjects.LoginPage;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -24,23 +24,19 @@ public class PriorityTests extends BaseTest {
     public void setupTests() {
         setup();
         loginPage = new LoginPage(driver);
-        driver.get(ConfProperties.getProperty("loginpage"));
-
+        driver.get(ConfProperties.getLoginPageUrl());
     }
     @Test
     @Order(1)
     public void checkLoginPage() {
-
         WebElement pageTitle = driver.findElement(By.id("login-header"));
         assertTrue(pageTitle.isDisplayed(), "Название страницы отображается");
         assertEquals("Авторизоваться с помощью", pageTitle.getText(), "Страница логина не найдена");
-
     }
 
     @Test
     @Order(3)
     void testExternalLogin(){
-
         loginPage.clickLoginExternal();
         Assert.assertEquals(loginPage.getLoginWithAppleTitleText(), "Используйте Apple ID для входа в приложение «Battle.net».", "Текст заголовка не соответствует ожидаемому");
     }

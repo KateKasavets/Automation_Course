@@ -11,7 +11,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+
 import java.util.concurrent.TimeUnit;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -19,19 +21,15 @@ public class LoginTest {
     public static LoginPage loginPage;
     public static WebDriver driver;
 
-
     @BeforeEach
     public void setup() {
-
-        System.setProperty("webdriver.chrome.driver", ConfProperties.getProperty("chromedriver"));
+        System.setProperty("webdriver.chrome.driver", ConfProperties.getChromeDriverPath());
         driver = new ChromeDriver();
         loginPage = new LoginPage(driver);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.get(ConfProperties.getProperty("loginpage"));
-
+        driver.get(ConfProperties.getLoginPageUrl());
     }
-
 
     @ParameterizedTest
     @CsvFileSource(resources = "/users.csv", numLinesToSkip = 1)
@@ -43,7 +41,6 @@ public class LoginTest {
         WebElement pageTitle = driver.findElement(By.xpath("//*[@class=\"title\"]"));
         assertTrue(pageTitle.isDisplayed(), "Название страницы отображается");
         assertEquals("Обзор учетной записи", pageTitle.getText(), "Текст заголовка не соответствует ожидаемому");
-
     }
 
     @AfterEach
@@ -51,7 +48,6 @@ public class LoginTest {
         driver.manage().deleteAllCookies();
         driver.navigate().refresh();
         driver.quit();
-
     }
 }
 

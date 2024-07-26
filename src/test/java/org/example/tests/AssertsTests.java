@@ -1,5 +1,6 @@
 package org.example.tests;
 import org.example.pageObjects.RegistrationPage;
+import org.example.utils.ConfProperties;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -16,12 +17,11 @@ public class AssertsTests extends BaseTest {
     public void setupAll() {
         setup();
         registrationPage = new RegistrationPage(driver);
-        registrationPage.openRegistrationPage("https://auth.applitools.com/users/general-register");
+        registrationPage.openRegistrationPage(ConfProperties.getRegistrationPage());
     }
 
     @Test
     public void testWithHardAsserts() {
-
         assertTrue(registrationPage.getFirstNameField().isDisplayed(), "FirstName Field is not displayed");
         assertTrue(registrationPage.getAgeField().isDisplayed(), "Age field is not displayed");
         assertTrue(registrationPage.getLastNameField().isDisplayed(), "LastName Field is not displayed");

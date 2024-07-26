@@ -1,6 +1,7 @@
 package org.example.tests;
 
 import org.example.pageObjects.LogPage;
+import org.example.utils.ConfProperties;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -15,14 +16,14 @@ public class DependentTests extends BaseTest {
     @BeforeAll
     public void setupAll() {
         setup();
-        driver.get("https://auth.applitools.com/users/login");
+        driver.get(ConfProperties.getloginPageDemoTool());
         logPage = new LogPage(driver);
     }
 
     @Test
     @Order(1)
     public void loginTest() {
-        logPage.login("evinasenla@gmail.com", "kk25474kkKK!");
+        logPage.login(ConfProperties.getLogin1(), ConfProperties.getPasswd1());
         isLoggedIn = logPage.isUserProfileButtonDisplayed();
         assertTrue(isLoggedIn, "User profile button is not displayed - Login may have failed");
     }
