@@ -9,12 +9,7 @@ import java.util.concurrent.TimeUnit;
 public class WebDriverSingleton {
     private static WebDriver driver;
 
-    private WebDriverSingleton() { //Одним из наиболее распространенных использований приватного конструктора является
-        // реализация дизайн-паттерна "Одиночка" (Singleton). Его цель – гарантировать, что будет существовать только
-        // один экземпляр класса и обеспечить глобальную точку доступа к этому объекту. Приватный конструктор
-        // предотвращает создание дополнительных объектов и обеспечивает уникальность объекта. Это то, что я нашла.
-        //НО возможно я что-то не так понимаю?
-
+    private WebDriverSingleton() {
     }
 
     public static WebDriver getDriver() {
@@ -30,7 +25,6 @@ public class WebDriverSingleton {
     public static void quitDriver() {
         if (driver != null) {
             driver.quit();
-            driver = null;
         }
     }
 }

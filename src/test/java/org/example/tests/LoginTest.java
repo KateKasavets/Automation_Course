@@ -3,6 +3,7 @@ package org.example.tests;
 
 import org.example.pageObjects.LoginPage;
 import org.example.utils.ConfProperties;
+import org.example.utils.WebDriverSingleton;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -45,8 +46,6 @@ public class LoginTest {
 
     @AfterEach
     public void tearDown() {
-        driver.manage().deleteAllCookies();
-        driver.navigate().refresh();
         driver.quit();
     }
 }

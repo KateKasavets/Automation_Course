@@ -34,7 +34,7 @@ public class LogPage {
 
         driver.findElement(signInButton).click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        driver.findElement(chooseProduct).click();
+        chooseProduct();
     }
 
     public boolean isUserProfileButtonDisplayed() {
@@ -63,5 +63,8 @@ public class LogPage {
 
     public String getPageTitleText() {
         return driver.findElement(pageTitle).getText();
+    }
+    public void chooseProduct() {
+        driver.findElement(chooseProduct).click();
     }
 }
